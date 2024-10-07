@@ -89,6 +89,10 @@ public class Calculate {
         }
     }
 
+     /**
+     * Метод производит поиск самого длинного слова
+     *
+     */
     public void findMaxString() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите размерность массива: ");
