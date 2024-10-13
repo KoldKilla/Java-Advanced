@@ -1,89 +1,32 @@
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Данный класс предназначен для произведения математических операций.
- * @author Демидов К. С.
- * @version 1.0
- * */
+ *
+ */
 public class Calculate {
+    private final Map<Integer, Command> commands = new HashMap<>();
 
     /**
-     * Метод производит сложение двух чисел.
-     *
-     * @param x - первое число
-     * @param y - второе число
-     * @return result - итог математической операции
+     * Конструктор, который инициализирует доступные математические команды.
      */
-    public static String add(double x, double y)
-    {
-        double value = x + y;
-        String result = String.format("%.4f", value);
-        return result;
+    public Calculate() {
+        commands.put(1, new AddCommand());
+        commands.put(2, new SubCommand());
+        commands.put(3, new MultCommand());
+        commands.put(4, new DivCommand());
     }
 
     /**
-     * Метод производит вычитание двух чисел.
+     * Выполняет указанную математическую операцию на основе действия.
      *
-     * @param x - первое число
-     * @param y - второе число
-     * @return result - итог математической операции
+     * @param action Код действия для выполнения (1 - сложение, 2 - вычитание, 3 - умножение, 4 - деление).
+     * @param context Контекст, содержащий входные данные для операции.
+     * @return Результат выполнения операции в виде строки или сообщение об ошибке.
      */
-    public static String sub(double x, double y)
-    {
-        double value = x - y;
-        String result = String.format("%.4f", value);
-        return result;
-    }
-
-    /**
-     * Метод производит умножение двух чисел.
-     *
-     * @param x - первое число
-     * @param y - второе число
-     * @return result - итог математической операции
-     */
-    public static String mult(double x, double y)
-    {
-        double value = x * y;
-        String result = String.format("%.4f", value);
-        return result;
-    }
-
-    /**
-     * Метод производит деление двух чисел.
-     *
-     * @param x - первое число
-     * @param y - второе число
-     * @return result - итог математической операции
-     */
-    public static String div(double x, double y)
-    {
-        double value = x / y;
-        String result = String.format("%.4f", value);
-        return result;
-    }
-
-    /**
-     * Метод производит деление двух чисел.
-     *
-     * @param i - тип математической операции
-     * @param x - первое число
-     * @param y - второе число
-     */
-    public void calculate(int i, double x, double y){
-        switch (i){
-            case 1:
-                System.out.println(add(x, y));
-                break;
-            case 2:
-                System.out.println(sub(x, y));
-                break;
-            case 3:
-                System.out.println(mult(x, y));
-                break;
-            case 4:
-                System.out.println(div(x, y));
-                break;
-            default:
-                System.out.println("Неправильная операция");
-        }
+    public String calculate(int action, Context context) {
+        Command command = commands.get(action);
+        return command != null ? command.execute(context) : "Неверное действие";
     }
 }
