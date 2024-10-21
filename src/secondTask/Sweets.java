@@ -1,15 +1,39 @@
 package secondTask;
 
-public interface Sweets {
-    String getName();
+public abstract class Sweets {
+    protected String name;
+    protected int price;
+    protected int weight;
 
-    void setName(String name);
+    public Sweets(String name, int price, int weight) {
+        this.name = name;
+        this.price = price;
+        this.weight = weight;
+    }
 
-    int getPrice();
+    public String getName() {
+        return name;
+    }
 
-    void setPrice(int price);
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    int getWeight();
+    public int getPrice() {
+        return price;
+    }
 
-    void setWeight(int weight);
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
+    public abstract String getUniqueParameter();
 }
