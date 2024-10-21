@@ -25,7 +25,7 @@ public class PreparedGift {
 
             switch (choice) {
                 case "1":
-                    Cookies cookies = new Cookies("Печенье \"Oreo\"", 200, 1000, "Ванильный вкус");
+                    Cookies cookies = new Cookies("Печенье \"Oreo\"", 200, 1000, "123");
                     sweets.add(cookies);
                     totalPrice += cookies.getPrice();
                     totalWeight += cookies.getWeight();
@@ -39,7 +39,7 @@ public class PreparedGift {
                     System.out.println("Мармелад \"Чупа-чупс Фэнсы\" добавлен в подарок");
                     break;
                 case "3":
-                    Chocolate chocolate = new Chocolate("Шоколад \"Ritter Sport\"", 59, 50, "Немецкое качество");
+                    Chocolate chocolate = new Chocolate("Шоколад \"Ritter Sport\"", 59, 50, "Германия");
                     sweets.add(chocolate);
                     totalPrice += chocolate.getPrice();
                     totalWeight += chocolate.getWeight();
@@ -57,7 +57,16 @@ public class PreparedGift {
         System.out.println("\nПодарок состоит из:");
         for (Sweets sweet : sweets) {
             count++;
-            System.out.println(count + ". " + sweet.getName() + " - " + sweet.getAdditionalInformation());
+            if (sweet instanceof Cookies) {
+                Cookies cookie = (Cookies) sweet;
+                System.out.println(count + ". " + cookie.getName() + " - Калорийность: " + cookie.getCalories());
+            } else if (sweet instanceof Jellybean) {
+                Jellybean Jellybean = (Jellybean) sweet;
+                System.out.println(count + ". " + Jellybean.getName() + " - Вкус: " + Jellybean.getTaste());
+            } else if (sweet instanceof Chocolate) {
+                Chocolate Chocolate = (Chocolate) sweet;
+                System.out.println(count + ". " + Chocolate.getName() + " - Страна производства: " + Chocolate.getCountry());
+            }
         }
         System.out.println(String.format("\nОбщий вес подарка: %s гр.\nОбщая цена подарка: %s руб.", totalWeight, totalPrice));
     }
