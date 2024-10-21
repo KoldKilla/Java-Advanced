@@ -4,13 +4,13 @@ public class Cookies implements Sweets{
     String name;
     int price;
     int weight;
-    String additionalInformation;
+    String calories;
 
-    public Cookies(String name, int price, int weight, String additionalInformation) {
+    public Cookies(String name, int price, int weight, String calories) {
         this.name = name;
         this.price = price;
         this.weight = weight;
-        this.additionalInformation = additionalInformation;
+        this.calories = calories;
     }
 
     @Override
@@ -43,13 +43,11 @@ public class Cookies implements Sweets{
         this.weight = weight;
     }
 
-    @Override
-    public String getAdditionalInformation() {
-        return additionalInformation;
+    public String getCalories() {
+        return calories;
     }
 
-    @Override
-    public void setAdditionalInformation(String additionalInformation) {
-        this.additionalInformation = additionalInformation;
+    public void setCalories(String calories) {
+        this.calories = calories;
     }
 }
