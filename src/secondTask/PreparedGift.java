@@ -13,7 +13,6 @@ public class PreparedGift {
         int totalWeight = 0;
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-
         System.out.println("Нажмите соответствующую цифру, чтобы добавить сладость в подарок:");
         System.out.println("'1' - Печенье \"Oreo\"");
         System.out.println("'2' - Мармелад \"Чупа-чупс Фэнсы\"");
@@ -25,7 +24,7 @@ public class PreparedGift {
 
             switch (choice) {
                 case "1":
-                    Cookies cookies = new Cookies("Печенье \"Oreo\"", 200, 1000, "123");
+                    Cookies cookies = new Cookies("Печенье \"Oreo\"", 200, 1000, "800 ккал");
                     sweets.add(cookies);
                     totalPrice += cookies.getPrice();
                     totalWeight += cookies.getWeight();
@@ -49,24 +48,13 @@ public class PreparedGift {
                     formed = true;
                     break;
             }
-
-
         }
 
         int count = 0;
         System.out.println("\nПодарок состоит из:");
         for (Sweets sweet : sweets) {
             count++;
-            if (sweet instanceof Cookies) {
-                Cookies cookie = (Cookies) sweet;
-                System.out.println(count + ". " + cookie.getName() + " - Калорийность: " + cookie.getCalories());
-            } else if (sweet instanceof Jellybean) {
-                Jellybean Jellybean = (Jellybean) sweet;
-                System.out.println(count + ". " + Jellybean.getName() + " - Вкус: " + Jellybean.getTaste());
-            } else if (sweet instanceof Chocolate) {
-                Chocolate Chocolate = (Chocolate) sweet;
-                System.out.println(count + ". " + Chocolate.getName() + " - Страна производства: " + Chocolate.getCountry());
-            }
+            System.out.println(count + ". " + sweet.getName() + " - " + sweet.getUniqueParameter());
         }
         System.out.println(String.format("\nОбщий вес подарка: %s гр.\nОбщая цена подарка: %s руб.", totalWeight, totalPrice));
     }
