@@ -12,8 +12,4 @@ public interface Sweets {
     int getWeight();
 
     void setWeight(int weight);
-
-    String getAdditionalInformation();
-
-    void setAdditionalInformation(String additionalInformation);
 }
