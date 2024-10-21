@@ -4,13 +4,13 @@ public class Chocolate implements Sweets {
     String name;
     int price;
     int weight;
-    String additionalInformation;
+    String country;
 
-    public Chocolate(String name, int price, int weight, String additionalInformation) {
+    public Chocolate(String name, int price, int weight, String country) {
         this.name = name;
         this.price = price;
         this.weight = weight;
-        this.additionalInformation = additionalInformation;
+        this.country = country;
     }
 
     @Override
@@ -43,13 +43,11 @@ public class Chocolate implements Sweets {
         this.weight = weight;
     }
 
-    @Override
-    public String getAdditionalInformation() {
-        return additionalInformation;
+    public String getCountry() {
+        return country;
     }
 
-    @Override
-    public void setAdditionalInformation(String additionalInformation) {
-        this.additionalInformation = additionalInformation;
+    public void setCountry(String country) {
+        this.country = country;
     }
 }
