@@ -1,89 +1,62 @@
 /**
  * Данный класс предназначен для произведения математических операций.
- * @author Демидов К. С.
- * @version 1.0
- * */
+ *
+ */
 public class Calculate {
+    private double firstNumber;
+    private double secondNumber;
 
     /**
-     * Метод производит сложение двух чисел.
+     * Устанавливает первое число для вычислений.
      *
-     * @param x - первое число
-     * @param y - второе число
-     * @return result - итог математической операции
+     * @param firstNumber значение первого числа
      */
-    public static String add(double x, double y)
-    {
-        double value = x + y;
-        String result = String.format("%.4f", value);
-        return result;
+    public void setFirstNumber(double firstNumber) {
+        this.firstNumber = firstNumber;
     }
 
     /**
-     * Метод производит вычитание двух чисел.
+     * Устанавливает первое число для вычислений.
      *
-     * @param x - первое число
-     * @param y - второе число
-     * @return result - итог математической операции
+     * @param secondNumber значение первого числа
      */
-    public static String sub(double x, double y)
-    {
-        double value = x - y;
-        String result = String.format("%.4f", value);
-        return result;
+    public void setSecondNumber(double secondNumber) {
+        this.secondNumber = secondNumber;
     }
 
     /**
-     * Метод производит умножение двух чисел.
+     * Выполняет арифметическую операцию над двумя числами.
      *
-     * @param x - первое число
-     * @param y - второе число
-     * @return result - итог математической операции
+     * @param operation код операции:
+     *                  1 - сложение,
+     *                  2 - вычитание,
+     *                  3 - умножение,
+     *                  4 - деление.
+     * @return результат выполнения операции.
+     * @throws IllegalArgumentException если код операции некорректен.
+     * @throws ArithmeticException если происходит попытка деления на ноль.
      */
-    public static String mult(double x, double y)
-    {
-        double value = x * y;
-        String result = String.format("%.4f", value);
-        return result;
-    }
-
-    /**
-     * Метод производит деление двух чисел.
-     *
-     * @param x - первое число
-     * @param y - второе число
-     * @return result - итог математической операции
-     */
-    public static String div(double x, double y)
-    {
-        double value = x / y;
-        String result = String.format("%.4f", value);
-        return result;
-    }
-
-    /**
-     * Метод производит деление двух чисел.
-     *
-     * @param i - тип математической операции
-     * @param x - первое число
-     * @param y - второе число
-     */
-    public void calculate(int i, double x, double y){
-        switch (i){
-            case 1:
-                System.out.println(add(x, y));
+    public double calculate(int operation) throws IllegalArgumentException, ArithmeticException {
+        double result;
+        switch (operation) {
+            case 1: // Сложение
+                result = firstNumber + secondNumber;
                 break;
-            case 2:
-                System.out.println(sub(x, y));
+            case 2: // Вычитание
+                result = firstNumber - secondNumber;
                 break;
-            case 3:
-                System.out.println(mult(x, y));
+            case 3: // Умножение
+                result = firstNumber * secondNumber;
                 break;
-            case 4:
-                System.out.println(div(x, y));
+            case 4: // Деление
+                if (secondNumber == 0) {
+                    throw new ArithmeticException("Ошибка: деление на ноль");
+                }
+                result = firstNumber / secondNumber;
                 break;
             default:
-                System.out.println("Неправильная операция");
+                throw new IllegalArgumentException("Ошибка: некорректная операция");
         }
+        return result;
     }
 }
