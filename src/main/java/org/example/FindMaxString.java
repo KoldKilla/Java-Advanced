@@ -1,3 +1,5 @@
+package org.example;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +16,11 @@ public class FindMaxString {
      *         или сообщение о нескольких словах с одинаковой максимальной длиной.
      */
     public String findLongestWord(String[] words) {
+        if (words.length == 0) {
+            // Если массив пустой, возвращаем сообщение об этом
+            return "Массив пустой";
+        }
+
         List<String> longestWords = new ArrayList<>();  // Список для хранения слов с максимальной длиной
         int maxLength = 0;  // Переменная для хранения максимальной длины слова
 
